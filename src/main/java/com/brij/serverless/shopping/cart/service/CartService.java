@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -24,17 +25,20 @@ public class CartService {
     public Iterable<CartEntity> getAll(){
         return cartRepository.findAll();
     }
-    public Optional<CartEntity> getCart(Integer customerId){
+    public Set<CartEntity> getCart(Integer customerId){
         return cartRepository.findByCustomerId(customerId);
-
     }
-    public Optional<CartEntity> addToCart(Integer customerId, CartItemEntity item){
-        return cartRepository.findByCustomerId(customerId).map(c ->{
-            item.setId(UUID.randomUUID());
-            item.setCart(c);
-            c.getItems().add(item);
-            return c;
-        });
 
+    public CartEntity save(CartEntity cart){
+        if(cart.getCartId() == null){
+            cart.setCartId(UUID.randomUUID());
+        }
+        for (CartItemEntity item : cart.getItems()) {
+            if(item.getId() == null){
+                item.setId(UUID.randomUUID());
+            }
+            item.setCart(cart);
+        }
+        return cartRepository.save(cart);
     }
 }

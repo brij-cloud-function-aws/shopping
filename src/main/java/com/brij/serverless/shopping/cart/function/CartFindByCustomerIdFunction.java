@@ -6,18 +6,23 @@ import com.brij.serverless.shopping.cart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
-public class CartFindByCustomerIdFunction implements Function<Integer, Optional<Cart>> {
+public class CartFindByCustomerIdFunction implements Function<Integer, Set<Cart>> {
 
+    private CartService cartService;
     @Autowired
-    CartService cartService;
+    public CartFindByCustomerIdFunction( CartService cartService){
+        this.cartService=cartService;
+    }
 
     @Override
-    public Optional<Cart> apply(Integer customerId) {
-        return cartService.getCart(customerId)
-                .map(CartEntity::toDto);
+    public Set<Cart> apply(Integer customerId) {
+        return cartService.getCart(customerId).stream()
+                .map(CartEntity::toDto).collect(Collectors.toSet());
     }
 
 

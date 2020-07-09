@@ -29,7 +29,8 @@ public class CartEntity {
         Cart dto =Cart.builder()
         .customerId(this.getCustomerId())
         .cartId(this.getCartId())
-       .items(this.getItems().stream().map(CartItemEntity::toDto).collect(Collectors.toSet())).build();
+        .items(this.getItems().stream().map(CartItemEntity::toDto).collect(Collectors.toSet()))
+        .build();
         return dto;
     }
 

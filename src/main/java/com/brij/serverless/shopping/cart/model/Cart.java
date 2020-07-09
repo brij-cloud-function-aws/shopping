@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @Getter
 @EqualsAndHashCode
 @Builder
+@Data
 public class Cart {
     private UUID cartId ;
     private Integer customerId;
@@ -20,9 +21,9 @@ public class Cart {
 
     public CartEntity toEntity(){
         CartEntity entity = new CartEntity();
-        entity.setCartId(this.getCartId());
-        entity.setCustomerId(this.getCustomerId());
-        entity.setItems(this.getItems().stream().map(CartItem::toEntity).collect(Collectors.toSet()));
+       entity.setCartId(this.getCartId());
+       entity.setCustomerId(this.getCustomerId());
+       entity.setItems(this.getItems().stream().map(CartItem::toEntity).collect(Collectors.toSet()));
         return entity;
     }
 }
