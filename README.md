@@ -7,5 +7,8 @@ Get:
 http://localhost:8080/shopping/api/cartFindByCustomerIdFunction/1
 
 POST
-http://localhost:8080/shopping/api/cartAddUpdateFunction
+http://localhost:8080/shopping/api/cartAddUpdateFunction(Does not work check why)
 {"cartId":"78ebb527-e249-4a44-aed9-96254c5327fd", "customerId":"cust1"}
+
+using curl (this work in a linux window git bash, somehow curl fails to post message using this)
+curl -X POST -H "Content-Type: application/json" -d '{"cartId":"78bb01e7-e641-4626-9d23-4e5208d6ccdc","customerId":1,"items":[{"id":"e3c8f757-6961-40ce-b57e-8236ceada3fe","sku":"SKU1","qty":12,"unitCost":10,"cartId":"78bb01e7-e641-4626-9d23-4e5208d6ccdc"}]}'  http://localhost:8080/shopping/api/cartAddUpdateFunction
