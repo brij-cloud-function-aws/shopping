@@ -22,3 +22,7 @@ POST (Header -"Content-Type":"application/json")
 ## Add item to a cart new cart
 POST (Header -"Content-Type":"application/json")
 {"cartId":"78bb01e7-e641-4626-9d23-4e5208d6ccdc","customerId":1,"items":[{"id":"e3c8f757-6961-40ce-b57e-8236ceada3fe","sku":"SKU1","qty":12,"unitCost":10,"cartId":"78bb01e7-e641-4626-9d23-4e5208d6ccdc"}, {"sku":"SKU1","qty":12,"unitCost":10}]}
+
+
+## Delete stack 
+aws cloudformation delete-stack --stack-name shopping --region us-east-1
