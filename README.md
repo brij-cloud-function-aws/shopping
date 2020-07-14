@@ -24,6 +24,7 @@ POST (Header -"Content-Type":"application/json")
 {"cartId":"78bb01e7-e641-4626-9d23-4e5208d6ccdc","customerId":1,"items":[{"id":"e3c8f757-6961-40ce-b57e-8236ceada3fe","sku":"SKU1","qty":12,"unitCost":10,"cartId":"78bb01e7-e641-4626-9d23-4e5208d6ccdc"}, {"sku":"SKU1","qty":12,"unitCost":10}]}
 
  curl -k -X POST -H "Content-Type: application/json" -d '{"customerId":1,"items":[{"sku":"SKU1","qty":12,"unitCost":10}]}'   https://brk6u2h6rd.execute-api.us-east-1.amazonaws.com/Prod 
+ 
  -k option is to ignore the ssl check
 
 ## Delete stack 
